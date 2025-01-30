@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { signContext } from "../App";
+import { signContext, searchContext } from "../App";
 
 import { addEmail, removeEmail } from "../redux/signSlice";
 import { useDispatch } from "react-redux";
@@ -11,6 +11,8 @@ export const Navbar=()=>
 {
    
     const {signstate, setSign}= useContext(signContext);
+
+    const {searchtext, setSearch}=useContext(searchContext);
 
     const dispatch=useDispatch();
 
@@ -41,8 +43,8 @@ export const Navbar=()=>
         {/* Search Bar */}
        { signstate && <div className="hidden md:flex items-center w-full max-w-md mx-4">
           <input
-            type="text"
-            placeholder="Search events here"
+            type="text" value={searchtext} onChange={(e)=> setSearch(e.target.value)}
+            placeholder="Search events by Title over here"
             className="w-full px-4 py-2 rounded-lg text-purple-800 bg-yellow-200 focus:outline-none focus:ring-2 focus:ring-yellow-400"
           />
         </div>
@@ -50,7 +52,7 @@ export const Navbar=()=>
 
         {/* Navigation Menu */}
         <nav className="hidden md:flex space-x-6 text-lg">
-          <Link to="/" className="hover:text-yellow-400 transition">
+          <Link to="/dashboard" className="hover:text-yellow-400 transition">
             Home
           </Link>
           <Link to="/signin" onClick={logoutFunc} className="hover:text-yellow-400 transition">

@@ -15,6 +15,8 @@ import {Provider} from 'react-redux';
 
 export const signContext= createContext();
 
+export const searchContext=createContext();
+
 function App() {
 
   let flag=false;
@@ -25,6 +27,8 @@ function App() {
   }
   const [signstate, setSign]=useState(flag || false);
 
+  const [searchtext, setSearch]=useState("");
+
   useEffect(()=>{
     localStorage.setItem('loginStatus',signstate);
   },[signstate])
@@ -33,7 +37,7 @@ function App() {
     <>
     <Provider store={store}>
     <signContext.Provider value={{signstate, setSign}}>
-    
+    <searchContext.Provider value={{searchtext, setSearch}}>
     <BrowserRouter>
     
     <Navbar/>
@@ -43,6 +47,7 @@ function App() {
       <Route path="/dashboard" element={<Dashboard/>}/>
     </Routes>
     </BrowserRouter>
+    </searchContext.Provider>
     </signContext.Provider>
     </Provider>
     </>
