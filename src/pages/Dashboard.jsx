@@ -103,7 +103,7 @@ useEffect(()=>{
       {/* Event Card Section */}
        <div className="space-y-8">
         {/* Example Event Card */}
-       {searchtext===""? (eventArr.map((event)=> {return <div className="bg-white p-6 rounded-lg shadow-md max-w-full lg:max-w-4xl mx-auto">
+       {searchtext===""? (eventArr.map((event)=> {return <div key={event.title} className="bg-white p-6 rounded-lg shadow-md max-w-full lg:max-w-4xl mx-auto">
           <div className="flex flex-col md:flex-row items-center space-y-4 md:space-x-6 md:space-y-0">
          
 
@@ -119,7 +119,7 @@ useEffect(()=>{
               </button>
             </div>
           </div>
-        </div>})):(searchArr.map((event)=> {return <div className="bg-white p-6 rounded-lg shadow-md max-w-full lg:max-w-4xl mx-auto">
+        </div>})):(searchArr.map((event)=> {return <div key={event.title} className="bg-white p-6 rounded-lg shadow-md max-w-full lg:max-w-4xl mx-auto">
           <div className="flex flex-col md:flex-row items-center space-y-4 md:space-x-6 md:space-y-0">
          
 
